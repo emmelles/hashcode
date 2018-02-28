@@ -18,7 +18,7 @@ def characterise_slice(pizza, corners):
             elif pizza[i][j] == 'M': n_m += 1
             elif pizza[i][j] ==  0 : return 0
     
-    return dict(t=n_t, m=n_m, corners)
+    return dict(t=n_t, m=n_m, corners=corners)
 
 
 def validate_slice(pizza, params, slice_dict):
