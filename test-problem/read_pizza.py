@@ -17,7 +17,7 @@ def read_pizza(filename):
     pizza = []
     
     for line in pizza_file[1:]:
-        pizza.append(list(line[:cols-1]))
+        pizza.append(list(line[:cols]))
 
     return dict(parameters=dict(rows=rows, cols=cols, mips=mips, maxc=maxc), pizza=pizza)
     
