@@ -19,7 +19,8 @@ def read_pizza(filename):
     for line in pizza_file[1:]:
         pizza.append(list(line[:cols-1]))
 
-    return parameters, pizza 
+    return dict(parameters=parameters, pizza=pizza)
     
 # Example usage:
-# params, piz = read_pizza('example.in')
+# pizza_dict = read_pizza('example.in')
+
