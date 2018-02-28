@@ -19,8 +19,9 @@ def read_pizza(filename):
     for line in pizza_file[1:]:
         pizza.append(list(line[:cols-1]))
 
-    return dict(parameters=parameters, pizza=pizza)
+    return dict(parameters=dict(rows=rows, cols=cols, mips=mips, maxc=maxc), pizza=pizza)
     
 # Example usage:
 # pizza_dict = read_pizza('example.in')
+
 
