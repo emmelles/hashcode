@@ -1,4 +1,4 @@
-def sum_ings(pizza, corners):
+def characterise_slice(pizza, corners):
     
     # pizza is an NxM list of lists
     # corners is a dictionary containing 4 keys, xtl, ytl, xbr, ybr
@@ -14,14 +14,14 @@ def sum_ings(pizza, corners):
 
     for j in range(xtl, xbr+1):
         for i in range(ytl, ybr+1):
-            if pizza[i][j] == 'T': n_t += 1
+            if   pizza[i][j] == 'T': n_t += 1
             elif pizza[i][j] == 'M': n_m += 1
-            else: return 0
+            elif pizza[i][j] ==  0 : return 0
     
-    return dict(t=n_t, m=n_m)
+    return dict(t=n_t, m=n_m, corners)
 
 
-def validate_slice(pizza, params, ing_dict):
+def validate_slice(pizza, params, slice_dict):
     if params['mips'] > ing_dict['m'] or params['mips'] > ing_dict['t']: return False
     
     if ing_dict['m'] + ing_dict['t'] > params['maxc']: return False
@@ -33,7 +33,7 @@ def count_cells(ing_dict):
     return ing_dict['t'] + ing_dict['m']
     
 
-def confirm_slice(pizza, corners):
+def reserve_slice(pizza, corners):
     # cells set to 0 are presumed to be taken by another slice
         
     xtl = corners['xtl']
@@ -46,3 +46,4 @@ def confirm_slice(pizza, corners):
             pizza[i][j] = 0
     
     return pizza
+    
