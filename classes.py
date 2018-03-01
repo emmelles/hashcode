@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+from helpers import *
+
 class Car:
     def __init__(self):
         self.x = 0
