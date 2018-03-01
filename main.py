@@ -19,3 +19,50 @@ for i, entry in enumerate(contents[1:]):
     for j in entry:
         # Strip spurious spaces:
         if j is not " ": bookings[i].append(j)
+
+class booking:
+    
+    def __init__(self, bookingN,fromx,fromy,tox,toy,beginning,end):
+        self.bookingN=bookingN
+        self.fromx = fromx
+        self.fromy = fromy
+        self.tox = tox
+        self.toy = toy
+        self.beginning = beginning
+        self.end = end
+        
+    def bookingN(self):
+        return self.bookingN
+        
+    def startx(self):
+        return self.fromx
+    
+    def starty(self):
+        return self.fromy
+    
+    def endx(self):
+        return self.tox
+    
+    def endy(self):
+        return self.endy
+    
+    def beginning(self):
+        return self.beginning
+    
+    def end(self):
+        return self.end
+        
+    def startcoord(self):
+        return [self.fromx,self.fromy]
+
+    def endcoord(self):
+        return [self.tox,self.toy]
+    
+    def timecoords(self):
+        return [self.beginning,self.end]
+    
+
+# This how you use
+print contents[1].split()
+mybooking=booking(1,0,0,1,3,2,9)
+print mybooking.end()
