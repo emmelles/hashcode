@@ -13,7 +13,7 @@ with open("a_example.in","r") as filein:
     contents=filein.read().split('\n')[:-1]
 
 # Reading unique values:
-rows,cols,cars,nrides,startbonus,totsteps=contents[0].split()
+rows,cols,cars,nrides,startbonus,totsteps = [int(d) for d in contents[0].split()]
 
         
 
@@ -21,7 +21,32 @@ rows,cols,cars,nrides,startbonus,totsteps=contents[0].split()
 # Iterating to make bookings into list of lists:
 bookings=[]
 for i, entry in enumerate(contents[1:]):
-        tempbooking=Booking(i,entry.split())
-        bookings.append(tempbooking)    
+        tempbooking = Booking(i,[int(d) for d in entry.split()])
+        bookings.append(tempbooking)  
+        
+book1 = bookings[1]      
+print book1.starty()
+
+time = 0
+carList = []
+for i in range(0,cars):
+    tempcar = Car()
+    carList.append(tempcar)
+
+print 'Number of cars: ' + str(len(carList))
+
+def timestep():
+    for car in carList:
+        if car.free == True:
+            bookings = sorted(bookings, key = lambda booking: distance_metric(car.x,car.y,booking.startx(),booking.starty()))
+            car.booking
+    return 1
+
+def dropFailedBookings:
     
-print bookings
+    return 0
+
+bookings = sorted(bookings, key = lambda booking: distance_metric(2,2,booking.startx(),booking.starty()))
+
+for b in bookings:
+    print [b.startx(), b.starty()]
