@@ -9,7 +9,7 @@ from classes import *
 from helpers import *
 
 # Reading file - filename will need editing for different runs:
-input_file = "a_example.in"
+input_file = "c_no_hurry.in"
 with open(input_file,"r") as filein:
     contents=filein.read().split('\n')[:-1]
 
@@ -24,8 +24,6 @@ bookings=[]
 for i, entry in enumerate(contents[1:]):
         tempbooking=Booking(i,[int(d) for d in entry.split()])
         bookings.append(tempbooking)
-
-print bookings
 
 taxis=[]
 for i in range(cars):

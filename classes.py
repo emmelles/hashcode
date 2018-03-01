@@ -68,3 +68,4 @@ class Booking:
     # distance and whatnot
     def distance(self):
         return distance_metric(self.fromx, self.fromy, self.tox, self.toy)
+
