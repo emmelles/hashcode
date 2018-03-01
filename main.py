@@ -12,25 +12,20 @@ with open("a_example.in","r") as filein:
 # Reading unique values:
 rows,cols,cars,nrides,startbonus,totsteps=contents[0].split()
 
-# Iterating to make bookings into list of lists:
-bookings=[]
-for i, entry in enumerate(contents[1:]):
-    bookings.append([])
-    for j in entry:
-        # Strip spurious spaces:
-        if j is not " ": bookings[i].append(j)
-
-class booking:
-    
-    def __init__(self, bookingN,fromx,fromy,tox,toy,beginning,end):
-        self.bookingN=bookingN
-        self.fromx = fromx
-        self.fromy = fromy
-        self.tox = tox
-        self.toy = toy
-        self.beginning = beginning
-        self.end = end
         
+class Booking:
+    
+    def __init__(self,bookingN,data):
+        self.data = data
+        self.bookingN=bookingN
+        self.fromx = data[0]
+        self.fromy = data[1]
+        self.tox = data[2]
+        self.toy = data[3]
+        self.beginning = data[4]
+        self.ending = data[5]
+    
+    # One by one getters    
     def bookingN(self):
         return self.bookingN
         
@@ -46,12 +41,13 @@ class booking:
     def endy(self):
         return self.endy
     
-    def beginning(self):
+    def starttime(self):
         return self.beginning
     
-    def end(self):
-        return self.end
-        
+    def endtime(self):
+        return self.ending
+
+    # Pair getters        
     def startcoord(self):
         return [self.fromx,self.fromy]
 
@@ -59,10 +55,13 @@ class booking:
         return [self.tox,self.toy]
     
     def timecoords(self):
-        return [self.beginning,self.end]
+        return [self.beginning,self.ending]
     
 
-# This how you use
-print contents[1].split()
-mybooking=booking(1,0,0,1,3,2,9)
-print mybooking.end()
+# Iterating to make bookings into list of lists:
+bookings=[]
+for i, entry in enumerate(contents[1:]):
+        tempbooking=Booking(i,entry.split())
+        bookings.append(tempbooking)    
+    
+print bookings
