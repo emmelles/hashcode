@@ -14,31 +14,34 @@ def characterise_slice(pizza, corners):
 
     for j in range(xtl, xbr+1):
         for i in range(ytl, ybr+1):
+            print i, j
             if   pizza[i][j] == 'T': n_t += 1
             elif pizza[i][j] == 'M': n_m += 1
-            elif pizza[i][j] ==  0 : return 0
+            elif pizza[i][j] ==  0 : return dict(fresh=False)
     
-    return dict(t=n_t, m=n_m, corners=corners)
+    slice_dict = dict(t=n_t, m=n_m, corners=corners, fresh=True)
+    
+    return slice_dict
 
 
-def validate_slice(pizza, params, slice_dict):
-    if params['mips'] > ing_dict['m'] or params['mips'] > ing_dict['t']: return False
+def validate_params(pizza, params, slice_dict):
+    if params['mips'] > slice_dict['m'] or params['mips'] > slice_dict['t']: return False
     
-    if ing_dict['m'] + ing_dict['t'] > params['maxc']: return False
+    if slice_dict['m'] + slice_dict['t'] > params['maxc']: return False
     
     return True
 
 
 def validate_corners(params, corners):
-    if corners['xbr'] > params['cols'] : return False
-    if corners['ybr'] > params['rows'] : return False
-    if corners['xtl'] > params['cols'] : return False
-    if corners['ytl'] > params['rows'] : return False
+    if corners['xbr'] > params['cols']-1 : return False
+    if corners['ybr'] > params['rows']-1 : return False
+    if corners['xtl'] > params['cols']-1 : return False
+    if corners['ytl'] > params['rows']-1 : return False
     else: return True
 
 
-def count_cells(ing_dict):
-    return ing_dict['t'] + ing_dict['m']
+def count_cells(slice_dict):
+    return slice_dict['t'] + slice_dict['m']
     
 
 def reserve_slice(pizza, corners):
@@ -64,7 +67,7 @@ def factor_pairs(n):
         
     factor_pairs=[]
     for i in factors:
-        factor_pairs.append([i, 12/i])
+        factor_pairs.append([i, n/i])
         
     return factor_pairs
 
